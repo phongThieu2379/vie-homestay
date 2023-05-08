@@ -14,7 +14,7 @@ export default function Header() {
           <h1>airbnb</h1>
         </div>
         <SearchBar />
-        <div className="flex ">
+        <div className="flex items-center ">
           <h3>Cho thuê chổ ở qua AirBnb</h3>
           <div className="mx-4 flex items-center">{logoLanguage}</div>
           <UserInfor />
