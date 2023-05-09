@@ -5,7 +5,7 @@ const { Meta } = Card;
 const RoomItem = ({ room }) => {
   const { tenPhong, giaTien, moTa, hinhAnh } = room;
   return (
-    <NavLink className="mx-3 my-6">
+    <NavLink to="/homepage/#" className="mx-3 my-6">
       <Card
         hoverable
         style={{
@@ -14,7 +14,7 @@ const RoomItem = ({ room }) => {
         cover={
           <img
             style={{
-              width: 240,
+              
               height: 160,
               objectFit: "cover",
             }}
