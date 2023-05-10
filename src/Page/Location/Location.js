@@ -16,7 +16,7 @@ export default function Location() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [roomList]);
 
   let renderRoomList = () => {
     return roomList.map((room) => {
@@ -28,11 +28,11 @@ export default function Location() {
       <div className="room-infor flex flex-col w-1/2">
         <h1>Chổ ở tại khu vực bạn đã chọn</h1>
         <div className="filter-option flex flex-row justify-between">
-          <button className="bg-white shadow px-3 rounded">Chổ ở</button>
-          <button className="bg-white shadow px-3 rounded">Giá</button>
-          <button className="bg-white shadow px-3 rounded">Đặt ngay</button>
-          <button className="bg-white shadow px-3 rounded">Phòng ngủ</button>
-          <button className="bg-white shadow px-3 rounded">Bộ lọc khác</button>
+          <button className="bg-slate shadow px-3 rounded-full">Chổ ở</button>
+          <button className="bg-slate shadow px-3 rounded-full">Giá</button>
+          <button className="bg-slate shadow px-3 rounded-full">Đặt ngay</button>
+          <button className="bg-slate shadow px-3 rounded-full">Phòng ngủ</button>
+          <button className="bg-slate shadow px-3 rounded-full">Bộ lọc khác</button>
         </div>
         <div className="room-list flex flex-wrap justify-start">
           {renderRoomList()}
