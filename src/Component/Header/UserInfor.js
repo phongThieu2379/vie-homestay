@@ -10,15 +10,37 @@ export default function UserInfor() {
     localStore.remove();
     window.location.reload();
   };
+
   return userInfor ? (
     <div className="flex items-center space-x-4">
       <div>{userInfor.user.name}</div>
-      <button className="bg-red-400 rounded p-2" onClick={handleLogout}>Log out</button>
+      <button disabled={true} onClick={()=>{console.log("hello");}}></button>
+      <button
+        data-modal-target="defaultModalLogin"
+        data-modal-hide="defaultModal"
+        className="bg-red-400 rounded p-2"
+        onClick={()=>handleLogout()}
+      >
+        Log out
+      </button>
+      
     </div>
   ) : (
     <div className="flex items-center space-x-4">
-      <button className="bg-green-400 rounded p-2" >Login</button>
-      <button  className="bg-yellow-400 rounded p-2">Sign up</button>
+      <button
+        data-modal-target="defaultModalLogin"
+        data-modal-show="defaultModalLogin"
+        className="bg-green-400 rounded p-2"
+      >
+        Login
+      </button>
+      <button
+        data-modal-target="defaultModalLogin"
+        data-modal-show="defaultModalLogin"
+        className="bg-yellow-400 rounded p-2"
+      >
+        Sign up
+      </button>
     </div>
   );
 }

@@ -1,27 +1,57 @@
-import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import { detailService } from '../../service/detailService'
 
-export default function RoomItem() {
-  const [room, setRoom] = useState([])
-
-  useEffect(() => { 
-    detailService
-    .getRoom()
-    .then((res) => {
-            console.log(res);
-            setRoom(res.data.content)
-          })
-          .catch((err) => {
-           console.log(err);
-          });
-   },[])
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { Card } from "antd";
+const { Meta } = Card;
+const RoomItem = ({ room,id }) => {
+  const { tenPhong, giaTien, moTa, hinhAnh } = room;
   return (
-    <div className='my-6 grid grid-cols-4 gap-5'>
-      {room.slice(0,2).map((item) => { 
-        return <NavLink to={`/detail/${item.id}`}><img className='h-17 w-17 mx-3 object-cover object-center' key={item.id} src={item.hinhAnh} alt="" /></NavLink>
-       })}
-    </div>
+    <NavLink to={`/detail/${id}`} className="mx-3 my-6">
+      <Card
+        hoverable
+        style={{
+          width: 260,
+        }}
+        cover={
+          <img
+            style={{
+              
+              height: 160,
+              objectFit: "cover",
+            }}
+            alt="example"
+            src={hinhAnh}
+          />
+        }
+      >
+        <Meta
+          style={{
+            width: "auto",
+            height: 200,
+          }}
+          title={tenPhong}
+          description={
+            <div>
+              <div
+                style={{
+                  height: 136,
+                  width: "auto",
+                  overflow: "hidden",
+                }}
+                className="font-light"
+              >
+                {moTa}
+              </div>
+              <div>
+                <b>{giaTien} $</b>/đêm
+              </div>
+            </div>
+          }
+        />
+      </Card>
+    </NavLink>
+  );
+};
 
-  )
-}
+export default RoomItem;
+
