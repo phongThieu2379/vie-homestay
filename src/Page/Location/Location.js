@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { roomService } from "../../service/bookingService";
 import RoomItem from "../Homepage/RoomItem";
+import RoomItemByLocation from "./RoomItemByLocation";
 
 export default function Location() {
   let { id } = useParams();
@@ -11,16 +12,15 @@ export default function Location() {
       .getRoomListByLocationId(id)
       .then((res) => {
         setRoomList(res.data.content);
-        console.log(res.data.content);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [roomList]);
+  }, [id]);
 
   let renderRoomList = () => {
     return roomList.map((room) => {
-      return <RoomItem id={room.id} room={room} />;
+      return <RoomItemByLocation id={room.id} room={room} />;
     });
   };
   return (

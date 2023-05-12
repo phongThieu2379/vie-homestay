@@ -5,6 +5,7 @@ export const userService={
         return https.post("/api/auth/signin",loginForm)
     },
     postSignUp:(signUp)=>{
-        return https.post("/api/auth/signin",signUp)
+        return https.post("api/auth/signup",signUp)
     }
+    
 }
