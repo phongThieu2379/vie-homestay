@@ -24,7 +24,7 @@ export default function Location() {
     });
   };
   return (
-    <div className="container mx-auto flex flex-row justify-center">
+    <div className="container mx-auto flex flex-row justify-center pb-10">
       <div className="room-infor flex flex-col w-1/2">
         <h1>Chổ ở tại khu vực bạn đã chọn</h1>
         <div className="filter-option flex flex-row justify-between">
@@ -34,7 +34,7 @@ export default function Location() {
           <button className="bg-slate shadow px-3 rounded-full">Phòng ngủ</button>
           <button className="bg-slate shadow px-3 rounded-full">Bộ lọc khác</button>
         </div>
-        <div className="room-list flex flex-wrap justify-start">
+        <div className="room-list py-5 flex flex-wrap justify-start">
           {renderRoomList()}
         </div>
       </div>

@@ -4,8 +4,8 @@ import Layout from "./Layout/Layout";
 import Homepage from "./Page/Homepage/Homepage";
 import { Component } from "react";
 import Location from "./Page/Location/Location";
-import NotFoundLocationPage from "./Page/Homepage/NotFoundLocationPage";
 import LoginAndSignupModal from "./Page/Homepage/LoginAndSignupModal";
+import NotFoundLocationPage from "./Page/Homepage/NotFoundPage/NotFoundLocationPage";
 
 function App() {
   return (
