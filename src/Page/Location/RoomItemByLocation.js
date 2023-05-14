@@ -4,59 +4,199 @@ export default function RoomItemByLocation({ room }) {
   const { tenPhong, giaTien, moTa, hinhAnh } = room;
   const rendereIsBanLa = () => {
     if (room.banLa) {
-      return <div class="mr-2">Bàn là</div>;
+      return (
+        <div class="mr-2 flex flex-row">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4.5 12.75l6 6 9-13.5"
+            />
+          </svg>
+          Bàn là
+        </div>
+      );
     }
   };
   const rendereIsBep = () => {
     if (room.bep) {
-      return <div class="mr-2">Bếp</div>;
+      return (
+        <div class="mr-2 flex flex-row">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4.5 12.75l6 6 9-13.5"
+            />
+          </svg>
+          Bếp
+        </div>
+      );
     }
   };
   const rendereIsDieuHoa = () => {
     if (room.dieuHoa) {
-      return <div class="mr-2">Điều hòa </div>;
+      return (
+        <div class="mr-2 flex flex-row">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4.5 12.75l6 6 9-13.5"
+            />
+          </svg>
+          Điều hòa{" "}
+        </div>
+      );
     }
   };
   const rendereIsDoXe = () => {
     if (room.doXe) {
-      return <div class="mr-2">Đổ xe</div>;
+      return (
+        <div class="mr-2 flex flex-row">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4.5 12.75l6 6 9-13.5"
+            />
+          </svg>
+          Đổ xe
+        </div>
+      );
     }
   };
   const rendereIsHoBoi = () => {
     if (room.hoBoi) {
-      return <div class="mr-2">Hồ bơi</div>;
+      return (
+        <div class="mr-2 flex flex-row">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4.5 12.75l6 6 9-13.5"
+            />
+          </svg>
+          Hồ bơi
+        </div>
+      );
     }
   };
   const rendereIsMayGiat = () => {
     if (room.mayGiat) {
-      return <div class="mr-2">Máy Giặt</div>;
+      return (
+        <div class="mr-2 flex flex-row">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4.5 12.75l6 6 9-13.5"
+            />
+          </svg>
+          Máy Giặt
+        </div>
+      );
     }
   };
   const rendereIsTv = () => {
     if (room.tivi) {
-      return <div class="mr-2">Tivi</div>;
+      return (
+        <div class="mr-2 flex flex-row">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4.5 12.75l6 6 9-13.5"
+            />
+          </svg>
+          Tivi
+        </div>
+      );
     }
   };
   const rendereIsWifi = () => {
     if (room.wifi) {
-      return <div class="mr-2">Wifi</div>;
+      return (
+        <div class="mr-2 flex flex-row">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4.5 12.75l6 6 9-13.5"
+            />
+          </svg>
+          Wifi
+        </div>
+      );
     }
   };
   return (
-    <div className="room-location-item w-full ">
-      <div class="flex flex-row items-start p-4 my-1 transition ease-in-out shadow w-full hover:shadow-slate-700 relative rounded  ">
-        <div className="location-item-img flex-shrink-0">
-          <img className="rounded" src={hinhAnh} />
-        </div>
-        <div className=" p-3 h-auto w-1/2">
-          <div className="flex-wrap" >
-            <div className=" border-b-2 border-black  ">
-              <h2
-                className="truncate"
-              >
-                {tenPhong}
-              </h2>
-              <button className="absolute right-4 top-8 flex place-items-center">
+    <div className="room-location-item ">
+      <div class="py-2">
+        <div class=" pr-4 relative hover:shadow-slate-700 flex flex-row items-start transition ease-in-out shadow rounded ">
+          <div className="location-item-img flex-shrink-0 p-3">
+            <img className="rounded" src={hinhAnh} />
+          </div>
+          <div className=" truncate p-3 h-auto grow pr-5">
+            <div className=" border-b-2 border-black">
+              <div className="truncate">{tenPhong}</div>
+              <button className="absolute right-4 top-3 flex place-items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

@@ -12,7 +12,6 @@ const LoginAndSignupModal = () => {
       .then((res) => {
         dispatch(setLoginAction(res.data.content));
         localStore.set(res.data.content);
-        console.log(res.data.content);
         message.success("Login thành công");
       })
       .catch((err) => {
@@ -25,7 +24,6 @@ const LoginAndSignupModal = () => {
     userService
       .postSignUp(value)
       .then((res) => {
-        console.log(res.data.content);
         message.success("Signup thành công");
       })
       .catch((err) => {
@@ -100,6 +98,7 @@ const LoginAndSignupModal = () => {
                   >
                     <Input />
                   </Form.Item>
+                  
                   <Form.Item
                     label="Password"
                     name="password"
@@ -253,7 +252,7 @@ const LoginAndSignupModal = () => {
                   >
                     <Input />
                   </Form.Item>
-                  <Form.Item name="role" label="SelectGender">
+                  <Form.Item name="gender" label="SelectGender">
                     <Select>
                       <Select.Option value="true">Male</Select.Option>
                       <Select.Option value="false">Female</Select.Option>

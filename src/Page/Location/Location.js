@@ -34,7 +34,9 @@ export default function Location() {
           <button className="bg-slate shadow px-3 rounded-full">Phòng ngủ</button>
           <button className="bg-slate shadow px-3 rounded-full">Bộ lọc khác</button>
         </div>
-        <div className="room-list py-5 flex flex-wrap justify-start">
+        
+        <div className="room-list py-5 flex flex-col justify-start">
+          
           {renderRoomList()}
         </div>
       </div>

@@ -46,7 +46,6 @@ export default function SearchBar() {
       navigate(`/location/${locationId}`);
     } else {
       navigate(`/notfound`);
-      console.log("useeffect2");
     }
   };
 
