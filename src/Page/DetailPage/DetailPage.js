@@ -28,10 +28,10 @@ export default function DetailPage() {
   return (
     <div className='container mx-auto px-20 my-10'>
 
-      <Title ten={detail.tenPhong} id={detail.maViTri} />
+      <Title key={detail.id} ten={detail.tenPhong} id={detail.maViTri} />
       <img src={detail.hinhAnh} alt="" />
-      <BodyDetail detail={detail} />
-      <Comment  />
+      <BodyDetail key={detail.id} detail={detail} />
+      <Comment key={detail.id} id={detail.id} />
     </div>
   )
 }

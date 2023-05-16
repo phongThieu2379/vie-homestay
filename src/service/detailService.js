@@ -10,7 +10,13 @@ export const detailService ={
      },
     getLocation:(maViTri)=>{
         return https.get(`/api/vi-tri/${maViTri}`)
-    }
+    },
+    getComment:(id) => { 
+        return https.get(`/api/binh-luan/lay-binh-luan-theo-phong/${id}`)
+     },
+     postComment:() => { 
+        return https.post(``)
+      }
     
 }
 
