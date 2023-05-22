@@ -20,5 +20,5 @@ export default function RoomList() {
       return <RoomItem id={room.id} room={room} />;
     });
   };
-  return <div className=" container mx-auto flex flex-wrap justify-center ">{renderRoomList()}</div>;
+  return <div className=" pb-10 container mx-auto flex flex-wrap justify-center ">{renderRoomList()}</div>;
 }

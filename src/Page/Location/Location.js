@@ -4,6 +4,7 @@ import { roomService } from "../../service/bookingService";
 import RoomItem from "../Homepage/RoomItem";
 // import { listRoomAction } from "../../redux-toolkit/detailSlice";
 // import { useDispatch } from "react-redux";
+import RoomItemByLocation from "./RoomItemByLocation";
 
 
 export default function Location() {
@@ -15,22 +16,24 @@ export default function Location() {
       .getRoomListByLocationId(id)
       .then((res) => {
         setRoomList(res.data.content);
+
         // dispatch(listRoomAction(res.data.content))
 
         // console.log(res.data.content);
+
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [roomList]);
+  }, [id]);
 
   let renderRoomList = () => {
     return roomList.map((room) => {
-      return <RoomItem id={room.id} room={room} />;
+      return <RoomItemByLocation id={room.id} room={room} />;
     });
   };
   return (
-    <div className="container mx-auto flex flex-row justify-center">
+    <div className="container mx-auto flex flex-row justify-center pb-10">
       <div className="room-infor flex flex-col w-1/2">
         <h1>Chổ ở tại khu vực bạn đã chọn</h1>
         <div className="filter-option flex flex-row justify-between">
@@ -40,7 +43,9 @@ export default function Location() {
           <button className="bg-slate shadow px-3 rounded-full">Phòng ngủ</button>
           <button className="bg-slate shadow px-3 rounded-full">Bộ lọc khác</button>
         </div>
-        <div className="room-list flex flex-wrap justify-start">
+        
+        <div className="room-list py-5 flex flex-col justify-start">
+          
           {renderRoomList()}
         </div>
       </div>

@@ -18,7 +18,7 @@ export default function UserInfor() {
       <button
         data-modal-target="defaultModalLogin"
         data-modal-hide="defaultModal"
-        className="bg-red-400 rounded p-2"
+        className="bg-red-500 rounded p-2"
         onClick={()=>handleLogout()}
       >
         Log out
@@ -30,14 +30,14 @@ export default function UserInfor() {
       <button
         data-modal-target="defaultModalLogin"
         data-modal-show="defaultModalLogin"
-        className="bg-green-400 rounded p-2"
+        className="bg-green-500 rounded p-2"
       >
         Login
       </button>
       <button
         data-modal-target="defaultModalLogin"
         data-modal-show="defaultModalLogin"
-        className="bg-yellow-400 rounded p-2"
+        className="bg-yellow-500 rounded p-2"
       >
         Sign up
       </button>

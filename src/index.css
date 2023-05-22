@@ -5,3 +5,51 @@
     box-sizing: border-box;
     margin: 0;
 }
+
+/* not found css start */
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+
+.notfound .container{
+  display: block;
+  text-align: center;
+  margin-top: 5%;
+}
+.notfound .four1{
+animation: swing ease-in-out 1.5s infinite alternate;
+    display: inline-block;
+}
+.notfound .zero{
+  animation: swing2 ease-in-out 1.5s infinite alternate;
+  display: inline-block;
+}
+.notfound .four2{
+animation: swing3 ease-in-out 1.5s infinite alternate;
+    display: inline-block;
+}
+
+@keyframes swing {
+    0% { transform: rotate(3deg); }
+    100% { transform: rotate(-3deg); }
+}
+
+@keyframes swing2 {
+    0% { transform: rotate(-3deg); }
+    100% { transform: rotate(3deg); }
+}
+@keyframes swing3 {
+    0% { transform: rotate(-3deg); }
+    100% { transform: rotate(8deg); }
+}
+.notfound h1{
+  font-family: 'Fjalla One';
+  text-align: center; 
+  color: #666;
+}
+/* not found css end */
+
+.room-location-item .location-item-img img{
+    width: 240px;
+    height: 170px;
+    object-fit: cover;
+    object-position: top left;
+}

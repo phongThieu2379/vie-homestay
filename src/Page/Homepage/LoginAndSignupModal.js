@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Checkbox, Form, Input, message } from "antd";
+import { Button, Checkbox, Form, Input, Select, message } from "antd";
 import { useDispatch } from "react-redux";
 import { userService } from "../../service/userService";
 import { setLoginAction } from "../../redux-toolkit/userSlice";
@@ -12,12 +12,23 @@ const LoginAndSignupModal = () => {
       .then((res) => {
         dispatch(setLoginAction(res.data.content));
         localStore.set(res.data.content);
-        console.log(res.data.content);
         message.success("Login thành công");
       })
       .catch((err) => {
         console.log(err);
         message.error("Login thất bại");
+      });
+  };
+  const onFinishSignUp = (value) => {
+    console.log(value);
+    userService
+      .postSignUp(value)
+      .then((res) => {
+        message.success("Signup thành công");
+      })
+      .catch((err) => {
+        console.log(err);
+        message.error("Signup thất bại");
       });
   };
   return (
@@ -87,6 +98,7 @@ const LoginAndSignupModal = () => {
                   >
                     <Input />
                   </Form.Item>
+                  
                   <Form.Item
                     label="Password"
                     name="password"
@@ -150,9 +162,34 @@ const LoginAndSignupModal = () => {
                   initialValues={{
                     remember: true,
                   }}
-                  onFinish={onFinish}
+                  onFinish={onFinishSignUp}
                   autoComplete="off"
                 >
+                  <Form.Item
+                    label="Id"
+                    name="id"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your ID!",
+                      },
+                    ]}
+                  >
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    label="Name"
+                    name="name"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your name!",
+                      },
+                    ]}
+                  >
+                    <Input />
+                  </Form.Item>
+
                   <Form.Item
                     label="Email"
                     name="email"
@@ -176,6 +213,56 @@ const LoginAndSignupModal = () => {
                     ]}
                   >
                     <Input.Password />
+                  </Form.Item>
+                  <Form.Item
+                    name="confirm"
+                    label="Confirm Password"
+                    dependencies={["password"]}
+                    hasFeedback
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please confirm your password!",
+                      },
+                      ({ getFieldValue }) => ({
+                        validator(_, value) {
+                          if (!value || getFieldValue("password") === value) {
+                            return Promise.resolve();
+                          }
+                          return Promise.reject(
+                            new Error(
+                              "The two passwords that you entered do not match!"
+                            )
+                          );
+                        },
+                      }),
+                    ]}
+                  >
+                    <Input.Password />
+                  </Form.Item>
+                  <Form.Item
+                    label="Phone Number"
+                    name="phone"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your username!",
+                      },
+                    ]}
+                  >
+                    <Input />
+                  </Form.Item>
+                  <Form.Item name="gender" label="SelectGender">
+                    <Select>
+                      <Select.Option value="true">Male</Select.Option>
+                      <Select.Option value="false">Female</Select.Option>
+                    </Select>
+                  </Form.Item>
+                  <Form.Item name="role" label="SelectRole">
+                    <Select>
+                      <Select.Option value="admin">Admin</Select.Option>
+                      <Select.Option value="user">User</Select.Option>
+                    </Select>
                   </Form.Item>
                   <Form.Item
                     name="remember"
