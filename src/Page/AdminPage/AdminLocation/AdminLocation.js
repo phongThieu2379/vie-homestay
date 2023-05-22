@@ -1,4 +1,4 @@
-import { Table } from "antd";
+import { Table, message } from "antd";
 import React, { useEffect, useState } from "react";
 import { headerLocation } from "./UltiAdminLocation";
 import { roomService } from "../../../service/bookingService";
@@ -24,7 +24,8 @@ export default function AdminLocation() {
 
       setLocationList(cloneLocationList);
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data.content);
+      message.error(error.response.data.content);
     }
   };
   let handleDeleteLocation = async (id) => {
@@ -32,7 +33,8 @@ export default function AdminLocation() {
       let res = await roomService.deleteLocation(id);
       console.log(res);
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data.content);
+      message.error(error.response.data.content);
     }
   };
   useEffect(() => {
