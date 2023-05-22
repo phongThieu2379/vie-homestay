@@ -8,7 +8,7 @@ export default function Title({ ten, id }) {
   const [local, setlocal] = useState([])
   let dispatch = useDispatch();
   useEffect(() => {
-    // console.log(" title")
+    
     detailService
       .getLocation(id)
       .then((res) => {
