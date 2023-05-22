@@ -14,8 +14,8 @@ export const detailService ={
     getComment:(id) => { 
         return https.get(`/api/binh-luan/lay-binh-luan-theo-phong/${id}`)
      },
-     postComment:() => { 
-        return https.post(``)
+     postComment:(formPostCmt) => { 
+        return https.post(`/api/binh-luan`,formPostCmt)
       },
     postBooking:(formBooking) => { 
         return https.post(`/api/dat-phong`,formBooking)

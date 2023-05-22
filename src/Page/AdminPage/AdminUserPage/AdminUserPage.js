@@ -23,7 +23,7 @@ export default function AdminUserPage() {
           ...item,
           action: (
             <button
-              className="bg-red-500 px-2 py-2"
+              className="bg-red-500 px-2 py-2 rounded"
               onClick={() => handleDeleteUser(item.id)}
             >
               Xóa

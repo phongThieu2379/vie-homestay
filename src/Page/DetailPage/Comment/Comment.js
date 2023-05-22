@@ -1,14 +1,25 @@
 import React, { useEffect, useState } from 'react'
-import InputCmt from './InputCmt'
 import { detailService } from '../../../service/detailService'
 import ItemCmt from './ItemCmt'
+import "./input.css"
+import { useSelector } from 'react-redux'
+import { message } from 'antd';
+
 
 export default function Comment({ id }) {
     const [cmt, setCmt] = useState([])
 
+    let user = useSelector(state => state.userSlice.userInfor?.user)
 
-    useEffect(() => {
-        // console.log("cmt")
+    let [formPostCmt, setFormPostCmt] = useState({
+      id: 0,
+      maPhong: 0,
+      maNguoiBinhLuan: 0,
+      ngayBinhLuan: "",
+      noiDung: "",
+      saoBinhLuan: 0
+    })
+    let fetchCmt = () => { 
         detailService
             .getCmt(id)
             .then((res) => {
@@ -18,12 +29,46 @@ export default function Comment({ id }) {
             .catch((err) => {
                 console.log(err);
             });
+     }
+    useEffect(() => {
+        // console.log("cmt")
+        fetchCmt()
+        
     }, [id])
 
     const renderComment = () => {
         return cmt.map((item) => {
             return <ItemCmt key={item.id} item={item} />
         })
+    }
+
+  
+    const handleSubmit = (e) => {
+      if(user!=null){
+        setFormPostCmt({
+          ...formPostCmt,
+          id: 0,
+          maPhong: id,
+          maNguoiBinhLuan: user.id,
+          ngayBinhLuan: "",
+          saoBinhLuan: 0
+        })
+        e.preventDefault();
+        console.log(formPostCmt)
+        detailService
+        .postComment(formPostCmt)
+        .then((res) => {
+                console.log(res);
+                fetchCmt()
+              })
+              .catch((err) => {
+               console.log(err);
+              });
+      }else{
+        message.error("Vui Lòng Đăng Nhập ")
+      }
+     
+  
     }
 
     return (
@@ -128,7 +173,16 @@ export default function Comment({ id }) {
 
             </div>
 
-            {/* <InputCmt /> */}
+            <div className='my-3'>
+                <form onSubmit={handleSubmit} >
+                    <input className='border  h-16 w-96'
+                        type="text" placeholder='Nhập Bình Luận'
+                        value={formPostCmt.noiDung}
+                        onChange={e => setFormPostCmt({ ...formPostCmt, noiDung: e.target.value })}
+                    />
+                    <button type='submit' className='inp__btn bg-blue-400 text-black '> Gửi </button>
+                </form>
+            </div>
         </div>
     )
 }
