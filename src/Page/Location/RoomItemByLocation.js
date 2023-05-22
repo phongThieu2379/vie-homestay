@@ -1,7 +1,8 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function RoomItemByLocation({ room }) {
-  const { tenPhong, giaTien, moTa, hinhAnh } = room;
+  const { tenPhong, giaTien, hinhAnh, id } = room;
   const rendereIsBanLa = () => {
     if (room.banLa) {
       return (
@@ -187,7 +188,7 @@ export default function RoomItemByLocation({ room }) {
     }
   };
   return (
-    <div className="room-location-item ">
+    <NavLink className="room-location-item" to={`/detail/${id}`}>
       <div class="py-2">
         <div class=" pr-4 relative hover:shadow-slate-700 flex flex-row items-start transition ease-in-out shadow rounded ">
           <div className="location-item-img flex-shrink-0 p-3">
@@ -230,6 +231,6 @@ export default function RoomItemByLocation({ room }) {
           </div>
         </div>
       </div>
-    </div>
+    </NavLink>
   );
 }
