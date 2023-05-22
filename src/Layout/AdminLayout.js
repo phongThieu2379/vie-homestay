@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import {
   FileOutlined,
@@ -23,115 +22,99 @@ function getItem(label, key, icon, children) {
   };
 }
 const items = [
-  getItem(
-    <NavLink to="/admin-user">Users</NavLink>,
-    "1",
-    <PieChartOutlined />
-  ),
+  getItem(<NavLink to="/admin-user">Users</NavLink>, "1", <UserOutlined />),
   getItem(
     <NavLink to="/admin-location">Location</NavLink>,
     "2",
     <DesktopOutlined />
   ),
-  getItem("User", "sub1", <UserOutlined />, [
-    getItem("Tom", "3"),
-    getItem("Bill", "4"),
-    getItem("Alex", "5"),
-  ]),
-  getItem("Team", "sub2", <TeamOutlined />, [
-    getItem("Team 1", "6"),
-    getItem("Team 2", "8"),
-  ]),
-  getItem("Files", "9", <FileOutlined />),
 ];
 const AdminLayout = ({ Component }) => {
   // kiểm tra user có phải admin trước khi render nội dung
   // false string rỗng, NaN, null, undefine
-  useEffect (()=>{
+  useEffect(() => {
     // nếu null hoặc object có key maLoaiNguoiDung khác QuanTri thì đá ra trang login
-    if(localStore.get()?.maLoaiNguoiDung!=="QuanTri"){
-
+    if (localStore.get()?.maLoaiNguoiDung !== "QuanTri") {
     }
-  })
+  });
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
   return (
     <div>
-       
-       <Layout
-      style={{
-        minHeight: "100vh",
-      }}
-    >
-      <Sider
-        collapsible
-        collapsed={collapsed}
-        onCollapse={(value) => setCollapsed(value)}
+      <Layout
+        style={{
+          minHeight: "100vh",
+        }}
       >
-        <div
-          style={{
-            height: 32,
-            margin: 16,
-            background: "rgba(255, 255, 255, 0.2)",
-          }}
-        />
-        <Menu
-          theme="dark"
-          defaultSelectedKeys={["1"]}
-          mode="inline"
-          items={items}
-        />
-      </Sider>
-      <Layout className="site-layout">
-        <Header
-          style={{
-            padding: 0,
-            background: colorBgContainer,
-            lineHeight:"24px"
-          }}
-          className=" h-"
+        <Sider
+          collapsible
+          collapsed={collapsed}
+          onCollapse={(value) => setCollapsed(value)}
         >
-            <div className="p-4 flex justify-end"><UserInfor/></div>
-        </Header>
-        <Content
-          style={{
-            margin: "0 16px",
-          }}
-        >
-          <Breadcrumb
-            style={{
-              margin: "16px 0",
-            }}
-          >
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
           <div
             style={{
-              padding: 24,
-              minHeight: 360,
+              height: 32,
+              margin: 16,
+              background: "rgba(255, 255, 255, 0.2)",
+            }}
+          />
+          <Menu
+            theme="dark"
+            defaultSelectedKeys={["1"]}
+            mode="inline"
+            items={items}
+          />
+        </Sider>
+        <Layout className="site-layout">
+          <Header
+            style={{
+              padding: 0,
               background: colorBgContainer,
+              lineHeight: "24px",
+            }}
+            className=" h-"
+          >
+            <div className="p-4 flex justify-end">
+              <UserInfor />
+            </div>
+          </Header>
+          <Content
+            style={{
+              margin: "0 16px",
             }}
           >
-            {/* Bill is a cat. */}
-            {/* Content start */}
-            <Component />
-             {/* Content end */}
-          </div>
-        </Content>
-        <Footer
-          style={{
-            textAlign: "center",
-          }}
-        >
-          Ant Design ©2023 Created by Ant UED
-        </Footer>
+            <Breadcrumb
+              style={{
+                margin: "16px 0",
+              }}
+            >
+              <Breadcrumb.Item>User</Breadcrumb.Item>
+              <Breadcrumb.Item>Bill</Breadcrumb.Item>
+            </Breadcrumb>
+            <div
+              style={{
+                padding: 24,
+                minHeight: 360,
+                background: colorBgContainer,
+              }}
+            >
+              {/* Content start */}
+              <Component />
+              {/* Content end */}
+            </div>
+          </Content>
+          <Footer
+            style={{
+              textAlign: "center",
+            }}
+          >
+            Thông tin admin
+          </Footer>
+        </Layout>
       </Layout>
-    </Layout> 
     </div>
-    
   );
 };
 export default AdminLayout;

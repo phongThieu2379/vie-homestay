@@ -15,5 +15,7 @@ export const roomService = {
   getRoomListByLocationId: (id) => {
     return https.get(`/api/phong-thue/lay-phong-theo-vi-tri?maViTri=${id}`);
   },
-  
+  deleteLocation: (id) => {
+    return https.delete(`https://airbnbnew.cybersoft.edu.vn/api/vi-tri/${id}`);
+  },
 };
