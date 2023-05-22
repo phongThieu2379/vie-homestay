@@ -19,7 +19,7 @@ export default function Location() {
 
         // dispatch(listRoomAction(res.data.content))
 
-        // console.log(res.data.content);
+        console.log(res.data.content);
 
       })
       .catch((err) => {

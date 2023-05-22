@@ -16,7 +16,11 @@ export const detailService ={
      },
      postComment:() => { 
         return https.post(``)
-      }
+      },
+    postBooking:(formBooking) => { 
+        return https.post(`/api/dat-phong`,formBooking)
+     }
+
     
 }
 

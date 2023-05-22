@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
-import { format, differenceInBusinessDays } from "date-fns";
+import { format } from "date-fns";
 import "./Booking.css";
 import { useSelector } from "react-redux";
+import { detailService } from "../../../../service/detailService";
+import { message } from "antd";
 
 export default function Booking() {
-  let { giaTien } = useSelector((state) => state.detailSlice.listRoom);
+  let { giaTien,id } = useSelector((state) => state.detailSlice.listRoom);
+  let user = useSelector((state) =>{return  state.userSlice.userInfor?.user} 
+   )
   const [openDate, setOpenDate] = useState(false);
   const [daysBook, setDaysBook] = useState(0);
   const [date, setDate] = useState([
@@ -17,6 +21,16 @@ export default function Booking() {
       key: "selection",
     },
   ]);
+  const [formBooking, setFormBooking] = useState({
+    id:"",
+    maPhong: "",
+    ngayDen: "",
+    ngayDi: "",
+    soLuongKhach: "",
+    maNguoiDung: ""
+  })
+
+
   const handleCalculateDays = (date) => {
     setDate([date.selection]);
     let dayCount =
@@ -24,6 +38,48 @@ export default function Booking() {
       (1000 * 3600 * 24);
     setDaysBook(dayCount);
   };
+  useEffect(() => { 
+     if(user!=null){
+      setFormBooking({
+        id:0,
+        maPhong: id,
+        ngayDen: date[0].startDate,
+        ngayDi: date[0].endDate,
+        soLuongKhach: 0,
+        maNguoiDung: user.id,
+      });
+     }else{
+      setFormBooking({
+        id:0,
+        maPhong: id,
+        ngayDen: date[0].startDate,
+        ngayDi: date[0].endDate,
+        soLuongKhach: 0,
+        maNguoiDung: null,
+      })
+     };
+      
+     
+    
+   },[date])
+  
+  let handlePostBooking = () => {
+    if(formBooking.maNguoiDung==null){
+      message.error("Vui Lòng Đăng Nhập Trước Khi Đặt Phòng ")
+    }else{
+      detailService
+      .postBooking(formBooking)
+      .then((res) => {
+              message.success("Đặt Phòng Thành Công")
+            })
+            .catch((err) => {
+            //  console.log(err);
+            });
+    }
+
+    console.log(formBooking)
+    
+  }
 
   return (
     <div className="w-full sm:w-1/2 lg:w-2/5">
@@ -82,9 +138,10 @@ export default function Booking() {
                   )}
                 </div>
               </div>
-              
+
             </div>
             <button
+              onClick={handlePostBooking}
               type="submit"
               className="w-full py-3  mt-3 rounded-lg text-white text-lg font-semibold"
               style={{

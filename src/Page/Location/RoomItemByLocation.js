@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function RoomItemByLocation({ room }) {
-  const { tenPhong, giaTien, moTa, hinhAnh } = room;
+  const { tenPhong, giaTien, moTa, hinhAnh,id } = room;
   const rendereIsBanLa = () => {
     if (room.banLa) {
       return (
