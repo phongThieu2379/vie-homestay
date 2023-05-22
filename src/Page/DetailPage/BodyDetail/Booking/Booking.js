@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-import { addDays, format,differenceInBusinessDays } from 'date-fns'
+import {  format,differenceInBusinessDays } from 'date-fns'
 import "./Booking.css"
 import { useSelector } from 'react-redux';
 
@@ -12,17 +12,11 @@ export default function Booking() {
   const [date, setDate] = useState([
     {
       startDate: new Date(),
-      endDate: addDays(new Date(), 7),
+      endDate: new Date(),
       key: 'selection'
     }
   ]);
 
-  const soDem = differenceInBusinessDays(
-    date[0].endDate,
-    date[0].startDate,
-  )
-
-  
 
   return (
     <div className='w-full sm:w-1/2 lg:w-2/5'>
@@ -81,7 +75,7 @@ export default function Booking() {
             <div className="border-b py-2">
               <div className="flex justify-between py-1 text-base">
                 <div className="underline text-gray-600">
-                  {giaTien} $ x {soDem} đêm
+                  {giaTien} $ x  đêm
                 </div>
                 <div>
                   <span>0</span>
@@ -102,7 +96,7 @@ export default function Booking() {
               <div>
                 Tổng trước thuế
               </div>
-              <div>{giaTien*soDem} $</div>
+              <div>{giaTien} $</div>
             </div>
           </div>
         </div>
@@ -111,3 +105,4 @@ export default function Booking() {
     </div>
   )
 }
+    // console.log("🚀 ~ file: Booking.js:116 ~ Booking ~ date[0].startDate:", date[0].startDate)

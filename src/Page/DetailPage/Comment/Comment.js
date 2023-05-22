@@ -8,7 +8,7 @@ export default function Comment({ id }) {
 
 
     useEffect(() => {
-        console.log("cmt")
+        // console.log("cmt")
         detailService
             .getCmt(id)
             .then((res) => {
@@ -128,7 +128,7 @@ export default function Comment({ id }) {
 
             </div>
 
-            <InputCmt />
+            {/* <InputCmt /> */}
         </div>
     )
 }

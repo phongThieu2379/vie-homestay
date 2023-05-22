@@ -8,7 +8,7 @@ export default function Title({ ten, id }) {
   const [local, setlocal] = useState([])
   let dispatch = useDispatch();
   useEffect(() => {
-    console.log(" title")
+    // console.log(" title")
     detailService
       .getLocation(id)
       .then((res) => {
@@ -16,7 +16,7 @@ export default function Title({ ten, id }) {
         dispatch(setLocalAction(res.data.content))
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response.data.message);
       });
 
   }, [id])
