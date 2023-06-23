@@ -6,6 +6,7 @@ import BodyDetail from './BodyDetail/BodyDetail';
 import Comment from './Comment/Comment';
 import { useDispatch } from 'react-redux';
 import { listRoomAction } from '../../redux-toolkit/detailSlice';
+import { setLoadingOffAction, setLoadingOnAction } from '../../redux-toolkit/spinnerSlice';
 
 export default function DetailPage() {
   let [detail, setDetail] = useState([])
@@ -13,25 +14,27 @@ export default function DetailPage() {
   let dispatch =useDispatch()
 
   useEffect(() => {
+    dispatch(setLoadingOnAction());
     detailService
       .getDetail(id)
       .then((res) => {
         setDetail(res.data.content);
         dispatch(listRoomAction(res.data.content))
-        console.log("detail")
+        dispatch(setLoadingOffAction());
       })
       .catch((err) => {
         console.log(err);
+        dispatch(setLoadingOffAction());
       });
   }, [])
 
   return (
     <div className='container mx-auto px-20 my-10'>
 
-      <Title key={detail.id} ten={detail.tenPhong} id={detail.maViTri} />
-      <img src={detail.hinhAnh} alt="" />
-      <BodyDetail key={detail.id} detail={detail} />
-      <Comment key={detail.id} id={detail.id} />
+      <Title ten={detail.tenPhong} />
+      <img style={{width:"60vw" , objectFit:"cover"}} src={detail.hinhAnh} alt="" />
+      <BodyDetail  detail={detail} />
+      <Comment  id={detail.id} />
     </div>
   )
 }

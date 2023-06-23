@@ -4,10 +4,11 @@ import ItemCmt from "./ItemCmt";
 import "./input.css";
 import { useSelector } from "react-redux";
 import { message } from "antd";
+import { useParams } from "react-router-dom";
 
-export default function Comment({ id }) {
+export default function Comment() {
   const [cmt, setCmt] = useState([]);
-
+  let { id } = useParams();
   let user = useSelector((state) => state.userSlice.userInfor?.user);
 
   let [formPostCmt, setFormPostCmt] = useState({
@@ -29,9 +30,8 @@ export default function Comment({ id }) {
       });
   };
   useEffect(() => {
-    // console.log("cmt")
     fetchCmt();
-  }, [id]);
+  }, []);
 
   const renderComment = () => {
     return cmt.map((item) => {

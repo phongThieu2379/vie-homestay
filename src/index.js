@@ -8,6 +8,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import userSlice from "./redux-toolkit/userSlice";
 import detailSlice from "./redux-toolkit/detailSlice";
 import localSlice from "./redux-toolkit/localSlice";
+import loginModalSlice from "./redux-toolkit/loginModalSlice";
+import spinnerSlice from "./redux-toolkit/spinnerSlice";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const store = configureStore({
@@ -15,6 +17,8 @@ const store = configureStore({
     userSlice,
     detailSlice,
     localSlice,
+    loginModalSlice,
+    spinnerSlice,
   },
 });
 root.render(

@@ -4,7 +4,7 @@ import SusgestionList from "./SusgestionList";
 export default function NotFoundLocationPage() {
   return (
     <div className="notfound">
-      <div className="container">
+      <div className="container mx-auto">
         <div className="four1">
           {/*?xml version="1.0" encoding="UTF-8"?*/}
           <svg

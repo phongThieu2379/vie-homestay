@@ -6,7 +6,7 @@ const { Meta } = Card;
 const RoomItem = ({ room,id }) => {
   const { tenPhong, giaTien, moTa, hinhAnh } = room;
   return (
-    <NavLink to={`/detail/${id}`} className="mx-3 my-6">
+    <NavLink to={`/detail/${id}`} className=" mx-3 my-6">
       <Card
         hoverable
         style={{
@@ -38,12 +38,12 @@ const RoomItem = ({ room,id }) => {
                   width: "auto",
                   overflow: "hidden",
                 }}
-                className="font-light"
+                className="font-medium text-gray-500"
               >
                 {moTa}
               </div>
-              <div>
-                <b>{giaTien} $</b>/đêm
+              <div className="font-extrabold text-black">
+                <b  >{giaTien} $</b>/đêm
               </div>
             </div>
           }

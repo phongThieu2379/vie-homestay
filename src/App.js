@@ -10,23 +10,13 @@ import Location from "./Page/Location/Location";
 import LoginAndSignupModal from "./Page/Homepage/LoginAndSignupModal";
 import NotFoundLocationPage from "./Page/Homepage/NotFoundPage/NotFoundLocationPage";
 import { adminRoute } from "./Route/Route";
+import UserPage from "./Page/UserPage/UserPage";
+import Spinner from "./Component/Spinner/Spinner";
 
 function App() {
   return (
-// <<<<<<< HEAD
-//     <BrowserRouter>
-//       <Routes>
-//         <Route path='/detail/:id' element={<Layout Component={DetailPage} />} />
-//         <Route path="/homepage" element={<Layout Component={Homepage} />} />
-//         <Route path="/location/:id" element={<Layout Component={Location} />} />
-//         <Route
-//           path="*"
-//           element={<Layout Component={NotFoundLocationPage} />}
-//         />
-//       </Routes>
-//     </BrowserRouter>
-// =======
     <div>
+      <Spinner />
       <LoginAndSignupModal />
       <BrowserRouter>
         <Routes>
@@ -44,8 +34,13 @@ function App() {
             element={<Layout Component={NotFoundLocationPage} />}
           />
           <Route
-           path='/detail/:id' 
-           element={<Layout Component={DetailPage} />} />
+            path="/detail/:id"
+            element={<Layout Component={DetailPage} />}
+          />
+          <Route
+            path="/user-information"
+            element={<Layout Component={UserPage} />}
+          />
 
           {adminRoute.map(({ url, component }) => {
             return <Route key={url} path={url} element={component} />;
@@ -53,7 +48,6 @@ function App() {
         </Routes>
       </BrowserRouter>
     </div>
-
   );
 }
 

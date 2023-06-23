@@ -1,14 +1,11 @@
 import React, { useEffect } from "react";
 import {
-  FileOutlined,
-  PieChartOutlined,
   UserOutlined,
   DesktopOutlined,
-  TeamOutlined,
 } from "@ant-design/icons";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { localStore } from "../service/localService";
 import UserInfor from "../Component/Header/UserInfor";
 // import Header from "../Component/Header"
@@ -31,10 +28,11 @@ const items = [
 ];
 const AdminLayout = ({ Component }) => {
   // kiểm tra user có phải admin trước khi render nội dung
-  // false string rỗng, NaN, null, undefine
+  let navigate = useNavigate()
   useEffect(() => {
-    // nếu null hoặc object có key maLoaiNguoiDung khác QuanTri thì đá ra trang login
-    if (localStore.get()?.maLoaiNguoiDung !== "QuanTri") {
+    // nếu null hoặc object có key role khác ADMIN thì đá ra trang homepage
+    if (localStore.get()?.user.role !== "ADMIN") {
+      navigate("/homepage")
     }
   });
   const [collapsed, setCollapsed] = useState(false);
@@ -90,8 +88,8 @@ const AdminLayout = ({ Component }) => {
                 margin: "16px 0",
               }}
             >
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
+              <Breadcrumb.Item>User list</Breadcrumb.Item>
+              
             </Breadcrumb>
             <div
               style={{

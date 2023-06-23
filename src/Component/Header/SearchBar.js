@@ -1,6 +1,6 @@
-import Search from "antd/es/transfer/search";
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+
+import React, {  useEffect, useRef, useState } from "react";
+import { useNavigate} from "react-router-dom";
 import { roomService } from "../../service/bookingService";
 import { AutoComplete } from "antd";
 
@@ -76,7 +76,7 @@ export default function SearchBar() {
       ) !== null;
     if (e.keyCode === 13) {
       if (!dropdownActive) {
-        // window.location.reload();
+
         handleSearch();
       } else {
         e.preventDefault();
@@ -90,12 +90,12 @@ export default function SearchBar() {
 
   return (
     <div className="">
-      <div className="relative">
-        <h1>Vị Trí</h1>
+      <div className="relative flex items-center justify-center space-x-2">
+        <h1>Location</h1>
 
         <AutoComplete
           style={{
-            width: 400,
+            width: 200,
           }}
           value={searchValue}
           onChange={(value) => {

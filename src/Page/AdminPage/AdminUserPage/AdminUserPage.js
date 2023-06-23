@@ -2,17 +2,26 @@ import React, { useEffect, useState } from "react";
 import { userService } from "../../../service/userService";
 import { Table, message } from "antd";
 import { headerUser } from "./UtilitiesAdmin";
+import { useDispatch } from "react-redux";
+import {
+  setLoadingOffAction,
+  setLoadingOnAction,
+} from "../../../redux-toolkit/spinnerSlice";
 
 export default function AdminUserPage() {
+  const dispatch = useDispatch();
   const [userList, setUserList] = useState([]);
   async function handleDeleteUser(userId) {
+    dispatch(setLoadingOnAction());
     try {
       let res = await userService.deleteUser(userId);
       fetchUserList();
       message.success("Xóa user thành công");
+      dispatch(setLoadingOffAction());
     } catch (error) {
       console.log(error);
       message.error(`Xóa thất bại : ${error.response.data.content}`);
+      dispatch(setLoadingOffAction());
     }
   }
   async function fetchUserList() {

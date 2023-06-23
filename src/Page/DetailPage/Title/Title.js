@@ -1,25 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { detailService } from '../../../service/detailService'
-import { useDispatch, useSelector } from 'react-redux';
-import { setLocalAction } from '../../../redux-toolkit/localSlice';
+import React from 'react'
 
-export default function Title({ ten, id }) {
 
-  const [local, setlocal] = useState([])
-  let dispatch = useDispatch();
-  useEffect(() => {
-    
-    detailService
-      .getLocation(id)
-      .then((res) => {
-        setlocal(res.data.content)
-        dispatch(setLocalAction(res.data.content))
-      })
-      .catch((err) => {
-        console.log(err.response.data.message);
-      });
+export default function Title({ ten}) {
 
-  }, [id])
 
   return (
     <div className='my-4'>
@@ -42,9 +25,7 @@ export default function Title({ ten, id }) {
 
 
           <span className='ml-1 mr-2'>Chủ nhà siêu cấp</span>
-          <span className=''>{local.tenViTri},</span>
-          <span className='mx-1'>{local.tinhThanh},</span>
-          <span className=''>{local.quocGia}</span>
+          
 
 
         </div>

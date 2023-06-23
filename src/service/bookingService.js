@@ -18,4 +18,14 @@ export const roomService = {
   deleteLocation: (id) => {
     return https.delete(`https://airbnbnew.cybersoft.edu.vn/api/vi-tri/${id}`);
   },
+
+  getReservationByUser: (id) => {
+    return https.get(`/api/dat-phong/lay-theo-nguoi-dung/${id}`);
+  },
+  getRoomDetailByRoomId: (id) => {
+    return https.get(`/api/phong-thue/${id}`);
+  },
+  deleteRoomReservation: (id) => {
+    return https.delete(`/api/dat-phong/${id}`);
+  },
 };

@@ -1,35 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { roomService } from "../../service/bookingService";
-import RoomItem from "../Homepage/RoomItem";
-// import { listRoomAction } from "../../redux-toolkit/detailSlice";
-// import { useDispatch } from "react-redux";
+
 import RoomItemByLocation from "./RoomItemByLocation";
+import { setLoadingOffAction, setLoadingOnAction } from "../../redux-toolkit/spinnerSlice";
+import { useDispatch } from "react-redux";
 
 
 export default function Location() {
   let { id } = useParams();
   const [roomList, setRoomList] = useState([]);
-  // let dispatch= useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(setLoadingOnAction());
     roomService
       .getRoomListByLocationId(id)
       .then((res) => {
+        
         setRoomList(res.data.content);
-
-        // dispatch(listRoomAction(res.data.content))
-
-        console.log(res.data.content);
-
+        dispatch(setLoadingOffAction());
       })
       .catch((err) => {
         console.log(err);
+        dispatch(setLoadingOffAction());
       });
   }, [id]);
 
   let renderRoomList = () => {
     return roomList.map((room) => {
-      return <RoomItemByLocation id={room.id} room={room} />;
+      return <RoomItemByLocation key={room.id} id={room.id} room={room} />;
     });
   };
   return (
