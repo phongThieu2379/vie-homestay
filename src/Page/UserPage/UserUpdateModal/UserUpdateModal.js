@@ -1,14 +1,14 @@
 import React, { memo, useState } from "react";
-import RowInfor from "./RowInfor";
+import RowInfor from "../RowInfor";
 import { Modal } from "antd";
 import { message, Upload } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
-import { userService } from "../../service/userService";
+import { userService } from "../../../service/userService";
 import { useDispatch } from "react-redux";
 import {
   setLoadingOffAction,
   setLoadingOnAction,
-} from "../../redux-toolkit/spinnerSlice";
+} from "../../../redux-toolkit/spinnerSlice";
 
 function UserUpdateModal({ userInfor, fetchUserInfor }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -75,7 +75,7 @@ function UserUpdateModal({ userInfor, fetchUserInfor }) {
         />
         <button
           onClick={handleOpenModal}
-          className="absolute hover:opacity-90 transition-all ease-linear bottom-0 right-36 bg-gray-700 flex items-center justify-center w-12 h-12 rounded-full"
+          className="absolute hover:opacity-90 transition-all ease-linear bottom-0 right-16 tablet:right-36 bg-gray-700 flex items-center justify-center w-12 h-12 rounded-full"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

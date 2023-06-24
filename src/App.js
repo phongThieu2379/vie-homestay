@@ -10,8 +10,8 @@ import Location from "./Page/Location/Location";
 import LoginAndSignupModal from "./Page/Homepage/LoginAndSignupModal";
 import NotFoundLocationPage from "./Page/Homepage/NotFoundPage/NotFoundLocationPage";
 import { adminRoute } from "./Route/Route";
-import UserPage from "./Page/UserPage/UserPage";
 import Spinner from "./Component/Spinner/Spinner";
+import UserPage from "./Page/UserPage/UserPage/UserPage";
 
 function App() {
   return (

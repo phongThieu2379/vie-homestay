@@ -42,7 +42,6 @@ export default function Booking() {
   };
   useEffect(() => {
     if (user != null) {
-      console.log(id);
       setFormBooking({
         maPhong: id,
         ngayDen: date[0].startDate,
@@ -58,11 +57,9 @@ export default function Booking() {
     if (user == null) {
       message.error("Vui Lòng Đăng Nhập Trước Khi Đặt Phòng ");
     } else {
-      console.log(formBooking);
       detailService
         .postBooking(formBooking)
         .then((res) => {
-          console.log(res);
           message.success("Đặt Phòng Thành Công, Vui lòng xem chi tiết trong thông tin người dùng");
         })
         .catch((err) => {

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { roomService } from "../../service/bookingService";
-import RoomItem from "./RoomItem";
+
 import { useDispatch } from "react-redux";
 import {
   setLoadingOffAction,
   setLoadingOnAction,
 } from "../../redux-toolkit/spinnerSlice";
+import RoomItem from "./RoomItem/RoomItem";
 
 export default function RoomList() {
   const [roomList, setRoomList] = useState([]);

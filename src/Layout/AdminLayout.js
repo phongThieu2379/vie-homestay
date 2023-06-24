@@ -7,7 +7,8 @@ import { Breadcrumb, Layout, Menu, theme } from "antd";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { localStore } from "../service/localService";
-import UserInfor from "../Component/Header/UserInfor";
+import UserInfor from "../Component/Header/UserInfor/UserInfor";
+
 // import Header from "../Component/Header"
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {

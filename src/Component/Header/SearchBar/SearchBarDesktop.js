@@ -1,10 +1,10 @@
 
 import React, {  useEffect, useRef, useState } from "react";
 import { useNavigate} from "react-router-dom";
-import { roomService } from "../../service/bookingService";
+import { roomService } from "../../../service/bookingService";
 import { AutoComplete } from "antd";
 
-export default function SearchBar() {
+export default function SearchBarDesktop() {
   let [searchValue, setSearchValue] = useState("");
   let [searchId, setSearchId] = useState("");
   let [locationList, setLocationList] = useState([]);

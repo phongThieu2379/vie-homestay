@@ -1,4 +1,4 @@
-import { Button, Col, DatePicker, Form, Input, Row, Select } from "antd";
+import { Button, Col, DatePicker, Form, Input, Row, Select, message } from "antd";
 import React, { memo, useState } from "react";
 import { userService } from "../../service/userService";
 import { useSelector } from "react-redux";
@@ -14,9 +14,10 @@ function RowInfor({ infor, value, nameInfor,fetchUserInfor }) {
       let res = await userService.putUpdateUserInfo(user.id, data);
       setIsHidden(true)
       fetchUserInfor(user.id)
-      console.log(res);
+      message.success("Update thông tin thành công")
     } catch (error) {
       console.log(error);
+      message.error("Update thông tin thất bại")
     }
   };
 

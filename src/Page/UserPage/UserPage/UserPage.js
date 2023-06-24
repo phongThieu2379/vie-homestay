@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userService } from "../../service/userService";
+import { userService } from "../../../service/userService";
 import { Button, Divider, Modal } from "antd";
-import { localStore } from "../../service/localService";
-import ReservationRoom from "./ReservationRoom";
-import UserUpdateModal from "./UserUpdateModal";
-import { setLoginAction } from "../../redux-toolkit/userSlice";
+import { localStore } from "../../../service/localService";
+import ReservationRoom from "../ReservationRoom";
+import UserUpdateModal from "../UserUpdateModal/UserUpdateModal";
+import { setLoginAction } from "../../../redux-toolkit/userSlice";
 
 export default function UserPage() {
   if (localStore.get()?.user == null) {
@@ -43,9 +43,9 @@ export default function UserPage() {
   
   return (
     <div className="container mx-auto">
-      <div className="p-5 flex flex-row ">
-        <div className="p-5">
-          <div className="space-y-2 w-80 shadow-md p-5 rounded-md ">
+      <div className="p-5 flex flex-col laptop:flex-row ">
+        <div className="p-5 px-0 laptop:px-5">
+          <div className="space-y-2 w-full laptop:w-80 shadow-md p-5 rounded-md ">
             <div className="relative items-center flex">
               <img
                 className="mx-auto rounded-full"
@@ -59,7 +59,7 @@ export default function UserPage() {
               />
               <button
                 onClick={handleOpenModal}
-                className="absolute hover:opacity-90 transition-all ease-linear bottom-0 right-14 bg-gray-700 flex items-center justify-center w-12 h-12 rounded-full"
+                className="absolute hover:opacity-90 transition-all ease-linear bottom-0 right-16 tablet:right-48 laptop:right-14 bg-gray-700 flex items-center justify-center w-12 h-12 rounded-full"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +90,7 @@ export default function UserPage() {
             <h4><span className="capitalize">{userInfor.name}</span> đã xác nhận</h4>
           </div>
         </div>
-        <div className="p-5 space-y-4 ml-4 grow">
+        <div className="p-5 space-y-4 laptop:ml-4 m-1 grow">
           <h1 className="font-bold">Phòng đã thuê</h1>
           <div className="divide-y divide-slate-200">
             <ReservationRoom user={localUser.user} />
