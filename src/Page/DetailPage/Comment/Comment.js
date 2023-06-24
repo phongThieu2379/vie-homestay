@@ -185,7 +185,7 @@ export default function Comment() {
       <div className="my-3">
         <form>
           <input
-            className="border  h-16 w-96"
+            className="border  h-16 w-full tablet:w-80 rounded"
             type="text"
             placeholder="Nhập Bình Luận"
             value={formPostCmt.noiDung}
@@ -204,7 +204,7 @@ export default function Comment() {
           <button
             type="submit"
             onClick={handleSubmit}
-            className="inp__btn bg-blue-400 text-black "
+            className="inp__btn bg-blue-400 text-black mt-2"
           >
             {" "}
             Gửi{" "}
