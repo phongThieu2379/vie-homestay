@@ -85,9 +85,19 @@ export default function UserInforMobile() {
         localStore.remove();
         window.location.reload();
       },
-      onCancel() {},
+      onCancel() { },
     });
   };
+  let renderAvatar = () => {
+    if (userInfor.user.avatar !== "") {
+      return <img
+        style={{ objectPosition: "top center" }}
+        src={userInfor.user.avatar}
+      />
+    } else {
+      return <UserOutlined />
+    }
+  }
   return userInfor ? (
     <div className="flex items-center space-x-4">
       <Dropdown menu={{ items }}>
@@ -95,14 +105,9 @@ export default function UserInforMobile() {
           <Avatar
             style={{ backgroundColor: "white", color: "black" }}
             size={32}
-            icon={
-              <img
-                style={{ objectPosition: "top center" }}
-                src={userInfor.user.avatar}
-              />
-            }
+            icon={renderAvatar()}
           />
-          
+
           <MenuOutlined className="text-white" />
         </div>
       </Dropdown>

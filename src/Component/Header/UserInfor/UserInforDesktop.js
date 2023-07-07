@@ -43,7 +43,7 @@ export default function UserInforDesktop() {
       label: (
         <button
           className=
-           "text-red-500 hover:text-black w-full" 
+          "text-red-500 hover:text-black w-full"
           onClick={() => handleLogout()}
         >
           Log out
@@ -80,9 +80,19 @@ export default function UserInforDesktop() {
         localStore.remove();
         window.location.reload();
       },
-      onCancel() {},
+      onCancel() { },
     });
   };
+  let renderAvatar = () => {
+    if (userInfor.user.avatar !== "") {
+      return <img
+        style={{ objectPosition: "top center" }}
+        src={userInfor.user.avatar}
+      />
+    } else {
+      return <UserOutlined />
+    }
+  }
   return userInfor ? (
     <div className="flex items-center space-x-4">
       <Dropdown menu={{ items }}>
@@ -90,12 +100,7 @@ export default function UserInforDesktop() {
           <Avatar
             style={{ backgroundColor: "white", color: "black" }}
             size={32}
-            icon={
-              <img
-                style={{ objectPosition: "top center" }}
-                src={userInfor.user.avatar}
-              />
-            }
+            icon={renderAvatar()}
           />
           <div style={{ maxWidth: 200 }} className="text-white truncate">{userInfor.user.name}</div>
           <MenuOutlined className="text-white" />

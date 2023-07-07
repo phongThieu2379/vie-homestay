@@ -6,6 +6,7 @@ import { localStore } from "../../../service/localService";
 import ReservationRoom from "../ReservationRoom";
 import UserUpdateModal from "../UserUpdateModal/UserUpdateModal";
 import { setLoginAction } from "../../../redux-toolkit/userSlice";
+import { UserOutlined } from "@ant-design/icons";
 
 export default function UserPage() {
   if (localStore.get()?.user == null) {
@@ -40,23 +41,36 @@ export default function UserPage() {
     fetchUserInfor(localUser.user.id);
     
   }, [localUser.user.id]);
-  
+  let renderAvatar = () => {
+    if (localUser.user.avatar !== "") {
+      return <img
+      className="mx-auto rounded-full"
+      style={{
+        width: 200,
+        height: 200,
+        objectFit: "cover",
+        objectPosition: "center top",
+      }}
+      src={userInfor.avatar}
+    />
+    } else {
+      return < UserOutlined className="mx-auto rounded-full"
+      style={{
+        width: 200,
+        height: 200,
+        objectFit: "cover",
+        objectPosition: "center top",
+        fontSize:150
+      }} />
+    }
+  }
   return (
     <div className="container mx-auto">
       <div className="p-5 flex flex-col laptop:flex-row ">
         <div className="p-5 px-0 laptop:px-5">
           <div className="space-y-2 w-full laptop:w-80 shadow-md p-5 rounded-md ">
             <div className="relative items-center flex">
-              <img
-                className="mx-auto rounded-full"
-                style={{
-                  width: 200,
-                  height: 200,
-                  objectFit: "cover",
-                  objectPosition: "center top",
-                }}
-                src={userInfor.avatar}
-              />
+              {renderAvatar()}
               <button
                 onClick={handleOpenModal}
                 className="absolute hover:opacity-90 transition-all ease-linear bottom-0 right-16 tablet:right-48 laptop:right-14 bg-gray-700 flex items-center justify-center w-12 h-12 rounded-full"

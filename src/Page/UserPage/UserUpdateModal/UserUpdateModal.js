@@ -2,7 +2,7 @@ import React, { memo, useState } from "react";
 import RowInfor from "../RowInfor";
 import { Modal } from "antd";
 import { message, Upload } from "antd";
-import { InboxOutlined } from "@ant-design/icons";
+import { InboxOutlined, UserOutlined } from "@ant-design/icons";
 import { userService } from "../../../service/userService";
 import { useDispatch } from "react-redux";
 import {
@@ -40,7 +40,29 @@ function UserUpdateModal({ userInfor, fetchUserInfor }) {
       onError(error); // Notify Antd Upload component about upload error
     }
   };
-
+  let renderAvatar = () => {
+    if (userInfor.avatar !== "") {
+      return <img
+        className="mx-auto rounded-full"
+        style={{
+          width: 200,
+          height: 200,
+          objectFit: "cover",
+          objectPosition: "center top",
+        }}
+        src={userInfor.avatar}
+      />
+    } else {
+      return < UserOutlined className="mx-auto rounded-full"
+        style={{
+          width: 200,
+          height: 200,
+          objectFit: "cover",
+          objectPosition: "center top",
+          fontSize: 150
+        }} />
+    }
+  }
   return (
     <div className="space-y-3">
       <Modal
@@ -63,16 +85,7 @@ function UserUpdateModal({ userInfor, fetchUserInfor }) {
       </Modal>
 
       <div className="relative items-center flex">
-        <img
-          className="mx-auto rounded-full"
-          style={{
-            width: 200,
-            height: 200,
-            objectFit: "cover",
-            objectPosition: "center top",
-          }}
-          src={userInfor.avatar}
-        />
+        {renderAvatar()}
         <button
           onClick={handleOpenModal}
           className="absolute hover:opacity-90 transition-all ease-linear bottom-0 right-16 tablet:right-36 bg-gray-700 flex items-center justify-center w-12 h-12 rounded-full"
